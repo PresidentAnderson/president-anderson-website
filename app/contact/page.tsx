@@ -1,8 +1,8 @@
 'use client';
 
 import Navigation from '../components/Navigation';
-import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, MapPin, Phone, Send, X } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Contact() {
@@ -12,6 +12,14 @@ export default function Contact() {
     subject: '',
     message: '',
   });
+
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [phoneRequestData, setPhoneRequestData] = useState({
+    name: '',
+    email: '',
+    reason: '',
+  });
+  const [phoneRevealed, setPhoneRevealed] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,6 +34,28 @@ export default function Contact() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handlePhoneRequestChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setPhoneRequestData({
+      ...phoneRequestData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handlePhoneRequestSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Log the request (in production, this would save to a database)
+    console.log('Phone request:', phoneRequestData);
+    setPhoneRevealed(true);
+  };
+
+  const closeModal = () => {
+    setShowPhoneModal(false);
+    setTimeout(() => {
+      setPhoneRevealed(false);
+      setPhoneRequestData({ name: '', email: '', reason: '' });
+    }, 300);
   };
 
   return (
@@ -90,12 +120,12 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="text-white font-semibold mb-1">Phone</h3>
-                      <a
-                        href="tel:+19293108968"
-                        className="text-gold-light hover:text-gold transition-colors"
+                      <button
+                        onClick={() => setShowPhoneModal(true)}
+                        className="text-gold-light hover:text-gold transition-colors underline cursor-pointer"
                       >
-                        +1 (929) 310-8968
-                      </a>
+                        Available upon request
+                      </button>
                     </div>
                   </div>
 
@@ -249,6 +279,124 @@ export default function Contact() {
           </div>
         </footer>
       </main>
+
+      {/* Phone Request Modal */}
+      <AnimatePresence>
+        {showPhoneModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="bg-black border-2 border-gold/40 rounded-lg p-8 max-w-md w-full relative"
+            >
+              <button
+                onClick={closeModal}
+                className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
+
+              {!phoneRevealed ? (
+                <>
+                  <h2 className="font-playfair text-3xl font-bold text-white mb-4">
+                    Request Phone Number
+                  </h2>
+                  <p className="text-white/70 mb-6">
+                    Please provide your details to receive the phone number.
+                  </p>
+
+                  <form onSubmit={handlePhoneRequestSubmit} className="space-y-4">
+                    <div>
+                      <label htmlFor="modal-name" className="block text-white font-semibold mb-2">
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="modal-name"
+                        name="name"
+                        required
+                        value={phoneRequestData.name}
+                        onChange={handlePhoneRequestChange}
+                        className="w-full px-4 py-3 bg-white/5 border border-gold/30 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors"
+                        placeholder="Your name"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="modal-email" className="block text-white font-semibold mb-2">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="modal-email"
+                        name="email"
+                        required
+                        value={phoneRequestData.email}
+                        onChange={handlePhoneRequestChange}
+                        className="w-full px-4 py-3 bg-white/5 border border-gold/30 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors"
+                        placeholder="your@email.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="modal-reason" className="block text-white font-semibold mb-2">
+                        Reason for contact *
+                      </label>
+                      <textarea
+                        id="modal-reason"
+                        name="reason"
+                        required
+                        value={phoneRequestData.reason}
+                        onChange={handlePhoneRequestChange}
+                        rows={3}
+                        className="w-full px-4 py-3 bg-white/5 border border-gold/30 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors resize-none"
+                        placeholder="Brief reason for requesting phone number..."
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full bg-gold hover:bg-gold-light text-black px-6 py-3 rounded-full font-playfair text-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2"
+                    >
+                      Get Phone Number
+                      <Send size={18} />
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center py-4"
+                >
+                  <div className="mb-6">
+                    <Phone className="text-gold mx-auto mb-4" size={48} />
+                    <h2 className="font-playfair text-3xl font-bold text-white mb-2">
+                      Thank You!
+                    </h2>
+                    <p className="text-white/70 mb-6">
+                      Here&apos;s the phone number:
+                    </p>
+                  </div>
+
+                  <a
+                    href="tel:+19293108968"
+                    className="inline-block bg-gold/20 border-2 border-gold/60 text-gold px-8 py-4 rounded-lg font-playfair text-2xl font-bold hover:bg-gold/30 transition-all duration-300"
+                  >
+                    +1 (929) 310-8968
+                  </a>
+
+                  <p className="text-white/60 text-sm mt-6">
+                    Click the number to call directly
+                  </p>
+                </motion.div>
+              )}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
