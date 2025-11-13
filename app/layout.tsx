@@ -14,11 +14,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "President Anderson | Premium Brand & Productions",
+  title: "President Anderson | Creative Authority & Productions",
   description: "President Anderson - Impresario, Producer, and Creative Visionary. Crafting exceptional experiences and premium entertainment.",
-  keywords: ["President Anderson", "producer", "impresario", "entertainment", "premium brand"],
+  keywords: ["President Anderson", "producer", "impresario", "entertainment", "creative authority"],
   openGraph: {
-    title: "President Anderson | Premium Brand",
+    title: "President Anderson | Creative Authority",
     description: "Impresario, Producer, and Creative Visionary",
     images: ["/logo.jpg"],
   },

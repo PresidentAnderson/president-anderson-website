@@ -241,7 +241,7 @@ export default function Contact() {
               PRESIDENT ANDERSON
             </p>
             <p className="text-white/60">
-              Premium Brand | Singer-Songwriter | Impresario | Producer
+              Creative Authority | Singer-Songwriter | Impresario | Producer
             </p>
             <p className="text-white/40 mt-4 text-sm">
               © {new Date().getFullYear()} President Anderson. All rights reserved.

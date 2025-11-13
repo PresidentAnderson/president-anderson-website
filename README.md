@@ -1,4 +1,4 @@
-# President Anderson - Premium Brand Website
+# President Anderson - Creative Authority Website
 
 A premium, full-spectrum website for President Anderson - Singer-Songwriter, Impresario, and Producer.
 

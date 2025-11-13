@@ -49,7 +49,7 @@ export default function Home() {
             className="mb-8"
           >
             <p className="text-gold text-xl md:text-2xl lg:text-3xl font-playfair mb-2">
-              Premium Brand
+              Creative Authority
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-gold-light text-lg md:text-xl">
               <span className="flex items-center gap-2">
@@ -196,7 +196,7 @@ export default function Home() {
             PRESIDENT ANDERSON
           </p>
           <p className="text-white/60">
-            Premium Brand | Singer-Songwriter | Impresario | Producer
+            Creative Authority | Singer-Songwriter | Impresario | Producer
           </p>
           <p className="text-white/40 mt-4 text-sm">
             © {new Date().getFullYear()} President Anderson. All rights reserved.
