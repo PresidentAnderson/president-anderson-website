@@ -3,6 +3,7 @@
 import Navigation from '../components/Navigation';
 import { motion } from 'framer-motion';
 import { Music, Film, Radio, Users, Calendar, Star } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Productions() {
   const productions = [
@@ -14,16 +15,19 @@ export default function Productions() {
           title: 'Original Albums',
           description: 'Crafting soulful albums that tell stories and evoke emotion',
           status: 'Ongoing',
+          href: '/music/original-albums',
         },
         {
           title: 'Live Performances',
           description: 'Intimate concerts and large-scale shows that captivate audiences',
           status: 'Featured',
+          href: '/music/live-performances',
         },
         {
           title: 'Collaborations',
           description: 'Working with talented artists to create unique musical experiences',
           status: 'Active',
+          href: '/music/collaborations',
         },
       ],
     },
@@ -35,16 +39,19 @@ export default function Productions() {
           title: 'Premium Events',
           description: 'Curating sophisticated entertainment experiences for discerning audiences',
           status: 'Signature',
+          href: '/productions/premium-events',
         },
         {
           title: 'Content Creation',
           description: 'Producing high-quality multimedia content across platforms',
           status: 'Active',
+          href: '/productions/content-creation',
         },
         {
           title: 'Brand Partnerships',
           description: 'Collaborating with premium brands on exclusive projects',
           status: 'Selective',
+          href: '/productions/brand-partnerships',
         },
       ],
     },
@@ -56,16 +63,19 @@ export default function Productions() {
           title: 'Podcast Series',
           description: 'Conversations with creative minds and industry leaders',
           status: 'Coming Soon',
+          href: '/media/podcast-series',
         },
         {
           title: 'Video Content',
           description: 'Behind-the-scenes and artistic documentary content',
           status: 'In Development',
+          href: '/media/video-content',
         },
         {
           title: 'Digital Presence',
           description: 'Engaging with audiences across social media platforms',
           status: 'Active',
+          href: '/media/digital-presence',
         },
       ],
     },
@@ -146,26 +156,30 @@ export default function Productions() {
 
                   <div className="grid md:grid-cols-3 gap-8">
                     {section.items.map((item, itemIndex) => (
-                      <motion.div
-                        key={itemIndex}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: itemIndex * 0.1 }}
-                        viewport={{ once: true }}
-                        className="group bg-gradient-to-b from-gold/5 to-transparent p-8 rounded-lg border border-gold/20 hover:border-gold/40 hover:from-gold/10 transition-all duration-300"
-                      >
-                        <div className="flex justify-between items-start mb-4">
-                          <h3 className="font-playfair text-2xl font-semibold text-white group-hover:text-gold transition-colors">
-                            {item.title}
-                          </h3>
-                          <span className="text-xs bg-gold/20 text-gold px-3 py-1 rounded-full border border-gold/30">
-                            {item.status}
+                      <Link key={itemIndex} href={item.href}>
+                        <motion.div
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: itemIndex * 0.1 }}
+                          viewport={{ once: true }}
+                          className="group bg-gradient-to-b from-gold/5 to-transparent p-8 rounded-lg border border-gold/20 hover:border-gold/40 hover:from-gold/10 transition-all duration-300 cursor-pointer h-full"
+                        >
+                          <div className="flex justify-between items-start mb-4">
+                            <h3 className="font-playfair text-2xl font-semibold text-white group-hover:text-gold transition-colors">
+                              {item.title}
+                            </h3>
+                            <span className="text-xs bg-gold/20 text-gold px-3 py-1 rounded-full border border-gold/30">
+                              {item.status}
+                            </span>
+                          </div>
+                          <p className="text-white/70 leading-relaxed mb-4">
+                            {item.description}
+                          </p>
+                          <span className="text-gold text-sm font-semibold group-hover:underline">
+                            Learn More →
                           </span>
-                        </div>
-                        <p className="text-white/70 leading-relaxed">
-                          {item.description}
-                        </p>
-                      </motion.div>
+                        </motion.div>
+                      </Link>
                     ))}
                   </div>
                 </motion.div>
