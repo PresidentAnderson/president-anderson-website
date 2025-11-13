@@ -91,10 +91,10 @@ export default function Contact() {
                     <div>
                       <h3 className="text-white font-semibold mb-1">Phone</h3>
                       <a
-                        href="tel:+1234567890"
+                        href="tel:+19293108968"
                         className="text-gold-light hover:text-gold transition-colors"
                       >
-                        Available upon request
+                        +1 (929) 310-8968
                       </a>
                     </div>
                   </div>
