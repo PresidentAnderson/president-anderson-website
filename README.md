@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# President Anderson - Premium Brand Website
+
+A premium, full-spectrum website for President Anderson - Singer-Songwriter, Impresario, and Producer.
+
+## Features
+
+- **Modern Design**: Elegant black and gold theme matching the premium brand aesthetic
+- **Responsive**: Fully responsive design that works on all devices
+- **Animated**: Smooth animations using Framer Motion
+- **Fast**: Built with Next.js 16+ and optimized for performance
+- **SEO-Ready**: Proper metadata and Open Graph tags
+
+## Pages
+
+- **Home**: Hero section with brand introduction and featured content
+- **About**: Detailed information about President Anderson's journey and values
+- **Productions**: Portfolio showcasing music, productions, and media work
+- **Contact**: Contact form and information for inquiries
+
+## Tech Stack
+
+- **Framework**: Next.js 16+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Fonts**: Playfair Display (headings), Inter (body)
 
 ## Getting Started
 
-First, run the development server:
+### Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This project is optimized for deployment on Vercel:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+vercel
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Color Scheme
 
-## Deploy on Vercel
+- **Primary**: Gold (#D4AF37)
+- **Background**: Black (#000000)
+- **Text**: White (#FFFFFF)
+- **Accents**: Gold variations for depth and elegance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+/app
+  /components     - Reusable components (Navigation, etc.)
+  /about          - About page
+  /productions    - Productions portfolio page
+  /contact        - Contact page
+  page.tsx        - Home page
+  layout.tsx      - Root layout with metadata
+  globals.css     - Global styles and theme
+/public
+  logo.jpg        - President Anderson logo
+```
+
+## License
+
+© 2025 President Anderson. All rights reserved.
